@@ -10,10 +10,10 @@ import UIKit
 
 class ViewController: UIViewController {
     
-    var temp = 0
+    var temp = 0.0
     var judge = 0
     var flag = 0
-    
+    var add = 0
     
     
     @IBOutlet weak var caculaterDisplay: UITextField!
@@ -119,18 +119,18 @@ class ViewController: UIViewController {
     
     
     @IBAction func button_sum(_ sender: Any) {
-        var sum = 0
+        var sum = 0.0
         switch flag {
         case 1:
-            sum = temp + Int(caculaterDisplay.text!)!
+            sum = temp + Double(caculaterDisplay.text!)!
             caculaterDisplay.text = "\(sum)"
             
         case 2:
-            sum = temp - Int(caculaterDisplay.text!)!
+            sum = temp - Double(caculaterDisplay.text!)!
             caculaterDisplay.text = "\(sum)"
             
         case 3:
-            sum = temp * Int(caculaterDisplay.text!)!
+            sum = temp * Double(caculaterDisplay.text!)!
             caculaterDisplay.text = "\(sum)"
             
         case 4:
@@ -138,56 +138,87 @@ class ViewController: UIViewController {
             {
                 break
             }else{
-                sum = temp / Int(caculaterDisplay.text!)!
+                sum = temp / Double(caculaterDisplay.text!)!
                 caculaterDisplay.text = "\(sum)"
             }
             
         default:
             break
         }
+        caculaterDisplay.text = String()
+        if judge == 1 {
+            caculaterDisplay.text = String(format:"%d",sum)
+        }else if judge == 0{
+            caculaterDisplay.text = String(format:"%.1f",sum)
+        }
+        
     }
     
     
     @IBAction func button_dot(_ sender: Any) {
         caculaterDisplay.text = caculaterDisplay.text! + "."
-        judge = 1
+        judge = 0
     }
     
     @IBAction func button_add(_ sender: Any) {
+        /*if add == 1{
+            flag = 1
+            temp = Double(caculaterDisplay.text!)!
+            caculaterDisplay.text = ""
+            
+        }else{
+            let x    = Double(caculaterDisplay.text!)!
+            caculaterDisplay.text = ""
+        }*/
+        
+        
+        
+        
+        
         flag = 1
-        temp = Int(caculaterDisplay.text!)!
+        temp = Double(caculaterDisplay.text!)!
         caculaterDisplay.text = ""
     }
     
     
     @IBAction func button_minus(_ sender: Any) {
         flag = 2
-        temp = Int(caculaterDisplay.text!)!
+        temp = Double(caculaterDisplay.text!)!
         caculaterDisplay.text = ""
     }
     
     
     @IBAction func button_multiply(_ sender: Any) {
         flag = 3
-        temp = Int(caculaterDisplay.text!)!
+        temp = Double(caculaterDisplay.text!)!
         caculaterDisplay.text = ""
     }
     
     
     @IBAction func button_divide(_ sender: Any) {
         flag = 4
-        temp = Int(caculaterDisplay.text!)!
+        temp = Double(caculaterDisplay.text!)!
         caculaterDisplay.text = ""
     }
     
     
-    @IBAction func button_off(_ sender: Any) {
+    @IBAction func change(_ sender: Any) {
+        let count = Double(caculaterDisplay.text!)!
+        let count2 = -count
+        caculaterDisplay.text = String(count2)
+        re = 0
+    }
+    
+    @IBAction func percent(_ sender: Any) {
+        let count = Double(caculaterDisplay.text!)!
+        let count2 = count * 0.01
+        caculaterDisplay.text = String(count2)
+        re = 0
     }
     
     
-    @IBAction func button_back(_ sender: Any) {
-        
-    }
+    
+    
     
     
     override func viewDidLoad() {

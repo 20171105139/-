@@ -201,18 +201,18 @@
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="DDR-js-fid">
-                                <rect key="frame" x="226" y="240" width="32" height="48"/>
+                                <rect key="frame" x="221" y="240" width="42" height="48"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="30"/>
-                                <state key="normal" title="-&gt;">
+                                <state key="normal" title="+/-">
                                     <color key="titleColor" cocoaTouchSystemColor="darkTextColor"/>
                                 </state>
                                 <connections>
-                                    <action selector="button_back:" destination="BYZ-38-t0r" eventType="touchUpInside" id="lSs-v5-pox"/>
+                                    <action selector="change:" destination="BYZ-38-t0r" eventType="touchUpInside" id="fHc-q3-jZH"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="MrA-Se-bea">
-                                <rect key="frame" x="112" y="240" width="51" height="48"/>
+                                <rect key="frame" x="23" y="240" width="51" height="48"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="30"/>
                                 <state key="normal" title="A/C">
@@ -223,14 +223,14 @@
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="a8a-ro-DCq">
-                                <rect key="frame" x="31" y="240" width="30" height="48"/>
+                                <rect key="frame" x="122" y="240" width="30" height="48"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="30"/>
-                                <state key="normal" title="C">
+                                <state key="normal" title="%">
                                     <color key="titleColor" cocoaTouchSystemColor="darkTextColor"/>
                                 </state>
                                 <connections>
-                                    <action selector="button_off:" destination="BYZ-38-t0r" eventType="touchUpInside" id="fh4-Za-Dz4"/>
+                                    <action selector="percent:" destination="BYZ-38-t0r" eventType="touchUpInside" id="j09-BL-bbn"/>
                                 </connections>
                             </button>
                         </subviews>
