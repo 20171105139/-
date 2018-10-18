@@ -2,7 +2,7 @@
 //  ViewController.swift
 //  计算器测试
 //
-//  Created by 国东东 on 2018/10/11.
+//  Created by 国东东 on 2018/10/18.
 //  Copyright © 2018年 国东东. All rights reserved.
 //
 
@@ -10,18 +10,15 @@ import UIKit
 
 class ViewController: UIViewController {
     
-    var temp = 0.0
+    var temp : Double = 0
+    var temp1 = 0
     var judge = 0
     var flag = 0
     var add = 0
     
-    
     @IBOutlet weak var caculaterDisplay: UITextField!
     
-    
-    
     var re = 0
-    
     
     @IBAction func button_1(_ sender: Any) {
         if re == 1{
@@ -119,7 +116,7 @@ class ViewController: UIViewController {
     
     
     @IBAction func button_sum(_ sender: Any) {
-        var sum = 0.0
+        var sum : Double = 0
         switch flag {
         case 1:
             sum = temp + Double(caculaterDisplay.text!)!
@@ -145,15 +142,14 @@ class ViewController: UIViewController {
         default:
             break
         }
-        caculaterDisplay.text = String()
-        if judge == 1 {
-            caculaterDisplay.text = String(format:"%d",sum)
-        }else if judge == 0{
-            caculaterDisplay.text = String(format:"%.1f",sum)
-        }
         
+        caculaterDisplay.text = String()
+        if judge == 0 {
+            caculaterDisplay.text = String(format:"%.1f",sum)
+        }else {
+            caculaterDisplay.text = String(format:"%d",sum)
+        }
     }
-    
     
     @IBAction func button_dot(_ sender: Any) {
         caculaterDisplay.text = caculaterDisplay.text! + "."
@@ -161,20 +157,6 @@ class ViewController: UIViewController {
     }
     
     @IBAction func button_add(_ sender: Any) {
-        /*if add == 1{
-            flag = 1
-            temp = Double(caculaterDisplay.text!)!
-            caculaterDisplay.text = ""
-            
-        }else{
-            let x    = Double(caculaterDisplay.text!)!
-            caculaterDisplay.text = ""
-        }*/
-        
-        
-        
-        
-        
         flag = 1
         temp = Double(caculaterDisplay.text!)!
         caculaterDisplay.text = ""
@@ -203,10 +185,13 @@ class ViewController: UIViewController {
     
     
     @IBAction func change(_ sender: Any) {
-        let count = Double(caculaterDisplay.text!)!
-        let count2 = -count
-        caculaterDisplay.text = String(count2)
-        re = 0
+        temp = Double(caculaterDisplay.text!)!
+        if temp==0{
+            caculaterDisplay.text = "\(temp)"
+        }else if temp>0{
+            temp = -temp
+            caculaterDisplay.text = "\(temp)"
+        }
     }
     
     @IBAction func percent(_ sender: Any) {
@@ -217,9 +202,37 @@ class ViewController: UIViewController {
     }
     
     
+    @IBAction func square(_ sender: Any) {
+        let count3 = Double(caculaterDisplay.text!)!
+        let count4 = count3 * count3
+        caculaterDisplay.text = String(count4)
+    }
     
+    @IBAction func cube(_ sender: Any) {
+        let count5 = Double(caculaterDisplay.text!)!
+        let count6 = count5 * count5 * count5
+        caculaterDisplay.text = String(count6)
+    }
     
+    /*@IBAction func radical(_ sender: Any) {
+        let count7 = Double(caculaterDisplay.text!)!
+        let count8 = sqrt（count7）
+        caculaterDisplay.text = String(count8)
+    }*/
     
+    @IBAction func back(_ sender: Any) {
+        if caculaterDisplay.text == ""{
+            caculaterDisplay.text = ""
+        }else{
+            temp1 = Int(caculaterDisplay.text!)!
+            temp1 /= 10
+            if temp1 != 0{
+                caculaterDisplay.text = "\(temp1)"
+            }else{
+                caculaterDisplay.text = ""
+            }
+        }
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
