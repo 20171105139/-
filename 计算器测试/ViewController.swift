@@ -15,6 +15,9 @@ class ViewController: UIViewController {
     var judge = 0
     var flag = 0
     var add = 0
+    var sum = 0.0
+    var sum1 : Double = 0
+    var i = 0
     
     @IBOutlet weak var caculaterDisplay: UITextField!
     
@@ -116,12 +119,11 @@ class ViewController: UIViewController {
     
     
     @IBAction func button_sum(_ sender: Any) {
-        var sum : Double = 0
         switch flag {
         case 1:
-            sum = temp + Double(caculaterDisplay.text!)!
+            sum = sum + Double(caculaterDisplay.text!)!
             caculaterDisplay.text = "\(sum)"
-            
+            i = 0
         case 2:
             sum = temp - Double(caculaterDisplay.text!)!
             caculaterDisplay.text = "\(sum)"
@@ -157,29 +159,40 @@ class ViewController: UIViewController {
     }
     
     @IBAction func button_add(_ sender: Any) {
-        flag = 1
         temp = Double(caculaterDisplay.text!)!
-        caculaterDisplay.text = ""
+        if(i == 0)
+        {
+            caculaterDisplay.text = ""
+            sum = temp
+        }
+        i=i+1
+        if(i == 2)
+        {
+            sum = sum + Double(caculaterDisplay.text!)!
+            caculaterDisplay.text = ""
+        }
+        i = 1
+        flag = 1
     }
     
     
     @IBAction func button_minus(_ sender: Any) {
         flag = 2
-        temp = Double(caculaterDisplay.text!)!
+        temp -= Double(caculaterDisplay.text!)!
         caculaterDisplay.text = ""
     }
     
     
     @IBAction func button_multiply(_ sender: Any) {
         flag = 3
-        temp = Double(caculaterDisplay.text!)!
+        temp *= Double(caculaterDisplay.text!)!
         caculaterDisplay.text = ""
     }
     
     
     @IBAction func button_divide(_ sender: Any) {
         flag = 4
-        temp = Double(caculaterDisplay.text!)!
+        temp /= Double(caculaterDisplay.text!)!
         caculaterDisplay.text = ""
     }
     
@@ -214,11 +227,19 @@ class ViewController: UIViewController {
         caculaterDisplay.text = String(count6)
     }
     
-    /*@IBAction func radical(_ sender: Any) {
+    @IBAction func radical(_ sender: Any) {
         let count7 = Double(caculaterDisplay.text!)!
-        let count8 = sqrt（count7）
-        caculaterDisplay.text = String(count8)
-    }*/
+        sum1 = Double(sqrt(count7))
+        caculaterDisplay.text = String(sum1)
+    }
+    
+    @IBAction func left(_ sender: Any) {
+        caculaterDisplay.text = caculaterDisplay.text! + "("
+    }
+    
+    @IBAction func right(_ sender: Any) {
+        caculaterDisplay.text = caculaterDisplay.text! + ")"
+    }
     
     @IBAction func back(_ sender: Any) {
         if caculaterDisplay.text == ""{
