@@ -11,13 +11,17 @@ import UIKit
 class ViewController: UIViewController {
     
     var temp : Double = 0
-    var temp1 = 0
+    var temp1 : Int = 0
+    var temp2 : Int = 0
     var judge = false
-    var flag = 0
-    var add = 0
-    var sum = 0.0
-    var sum1 = 0
-    var i = 0
+    var flag : Int = 0
+    var add : Int = 0
+    var sum : Double = 0
+    var sum1 : Int = 0
+    var i : Int = 0
+    var calFlag : Int = 0
+    let count2 : Double = 0
+    
     
     @IBOutlet weak var caculaterDisplay: UITextField!
     
@@ -80,7 +84,7 @@ class ViewController: UIViewController {
     
     
     @IBAction func button_delete(_ sender: Any) {
-        caculaterDisplay.text = ""
+        caculaterDisplay.text = "0"
         judge = false
     }
     
@@ -100,22 +104,44 @@ class ViewController: UIViewController {
             }
             
         case 2:
-            sum = sum - Double(caculaterDisplay.text!)!
-            caculaterDisplay.text = "\(sum)"
-            i = 0
+            if judge == true {
+                sum = sum - Double(caculaterDisplay.text!)!
+                caculaterDisplay.text = "\(sum)"
+                i = 0
+            }
+            if judge == false {
+                sum1 = Int(sum - Double(caculaterDisplay.text!)!)
+                caculaterDisplay.text = "\(sum1)"
+                i = 0
+            }
+            
             
         case 3:
-            sum = sum * Double(caculaterDisplay.text!)!
-            caculaterDisplay.text = "\(sum)"
-            i = 0
+            if judge == true {
+                sum = sum * Double(caculaterDisplay.text!)!
+                caculaterDisplay.text = "\(sum)"
+                i = 0
+            }
+            if judge == false {
+                sum1 = Int(sum * Double(caculaterDisplay.text!)!)
+                caculaterDisplay.text = "\(sum1)"
+                i = 0
+            }
+            
             
         case 4:
             if caculaterDisplay.text=="0"
             {
                 break
-            }else{
+            }
+            if judge == true {
                 sum = sum / Double(caculaterDisplay.text!)!
                 caculaterDisplay.text = "\(sum)"
+                i = 0
+            }
+            if judge == false {
+                sum1 = Int(sum / Double(caculaterDisplay.text!)!)
+                caculaterDisplay.text = "\(sum1)"
                 i = 0
             }
             
@@ -123,12 +149,6 @@ class ViewController: UIViewController {
             break
         }
         
-       /* caculaterDisplay.text = String()
-        if judge == 0 {
-            caculaterDisplay.text = String(format:"%.1f",sum)
-        }else {
-            caculaterDisplay.text = String(format:"%d",sum)
-        }*/
     }
     
     @IBAction func button_dot(_ sender: Any) {
@@ -209,38 +229,71 @@ class ViewController: UIViewController {
     
     
     @IBAction func change(_ sender: Any) {
-        temp = Double(caculaterDisplay.text!)!
-        if temp==0{
-            caculaterDisplay.text = "\(temp)"
-        }else if temp>0{
-            temp = -temp
-            caculaterDisplay.text = "\(temp)"
+        if judge == true{
+            temp = Double(caculaterDisplay.text!)!
+            if temp==0{
+                caculaterDisplay.text = "\(temp)"
+            }else if temp>0{
+                temp = -temp
+                caculaterDisplay.text = "\(temp)"
+            }
+        }
+        if judge == false{
+            temp2 = Int(caculaterDisplay.text!)!
+            if temp2==0{
+                caculaterDisplay.text = "\(temp2)"
+            }else if temp2>0{
+                temp2 = -temp2
+                caculaterDisplay.text = "\(temp2)"
+            }
         }
     }
     
     @IBAction func percent(_ sender: Any) {
-        let count = Double(caculaterDisplay.text!)!
-        let count2 = count * 0.01
-        caculaterDisplay.text = String(count2)
+            let count = Double(caculaterDisplay.text!)!
+            let count2 = count * 0.01
+            caculaterDisplay.text = String(count2)
     }
     
-    
     @IBAction func square(_ sender: Any) {
-        let count3 = Double(caculaterDisplay.text!)!
-        let count4 = count3 * count3
-        caculaterDisplay.text = String(count4)
+        if judge == true{
+            let count3 = Double(caculaterDisplay.text!)!
+            let count4 = count3 * count3
+            caculaterDisplay.text = String(count4)
+        }
+        if judge == false{
+            let count3 = Int(caculaterDisplay.text!)!
+            let count4 = count3 * count3
+            caculaterDisplay.text = String(count4)
+        }
     }
     
     @IBAction func cube(_ sender: Any) {
-        let count5 = Double(caculaterDisplay.text!)!
-        let count6 = count5 * count5 * count5
-        caculaterDisplay.text = String(count6)
+        if judge == true{
+            let count5 = Double(caculaterDisplay.text!)!
+            let count6 = count5 * count5 * count5
+            caculaterDisplay.text = String(count6)
+        }
+        if judge == false{
+            let count5 = Int(caculaterDisplay.text!)!
+            let count6 = count5 * count5 * count5
+            caculaterDisplay.text = String(count6)
+        }
+        
     }
     
     @IBAction func radical(_ sender: Any) {
-        let count7 = Double(caculaterDisplay.text!)!
-        sum1 = Int(sqrt(count7))
-        caculaterDisplay.text = String(sum1)
+        if judge == true{
+            let count7 = Double(caculaterDisplay.text!)!
+            sum = Double(sqrt(count7))
+            caculaterDisplay.text = String(sum)
+        }
+        if judge == false{
+            let count7 = Double(caculaterDisplay.text!)!
+            sum1 = Int(sqrt(count7))
+            caculaterDisplay.text = String(sum1)
+        }
+        
     }
     
     @IBAction func left(_ sender: Any) {
@@ -267,6 +320,7 @@ class ViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        caculaterDisplay.text = "0"
         // Do any additional setup after loading the view, typically from a nib.
     }
 
