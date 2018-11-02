@@ -15,6 +15,7 @@ class ViewController: UIViewController {
     var temp2 : Int = 0
     var judge = false
     var flag : Int = 0
+    var flag1 : Int = 0
     var add : Int = 0
     var sum : Double = 0
     var sum1 : Int = 0
@@ -145,7 +146,7 @@ class ViewController: UIViewController {
     
     
     @IBAction func button_delete(_ sender: Any) {
-        caculaterDisplay.text = "0"
+        caculaterDisplay.text = ""
         judge = false
         caculatorOperator = 0
         temp = 0
@@ -158,13 +159,19 @@ class ViewController: UIViewController {
         case 1:
             if judge == true{
                 if caculatorOperator == 1{
-                    caculaterDisplay.text = "\(temp + Double(caculaterDisplay.text!)!)"
+                    sum = sum + Double(caculaterDisplay.text!)!
+                    caculaterDisplay.text = "\(sum)"
+                    //i = 0
+                    //sum = 0
                 }
                 calFlag = 2
             }
             if judge == false{
                 if caculatorOperator == 1{
-                    caculaterDisplay.text = "\(temp1 + Int(caculaterDisplay.text!)!)"
+                    sum1 = Int(sum + Double(caculaterDisplay.text!)!)
+                    caculaterDisplay.text = "\(sum1)"
+                    //i = 0
+                    
                 }
                 calFlag = 2
             }
@@ -183,13 +190,17 @@ class ViewController: UIViewController {
         case 2:
             if judge == true{
                 if caculatorOperator == 1{
-                    caculaterDisplay.text = "\(temp - Double(caculaterDisplay.text!)!)"
+                    sum = sum - Double(caculaterDisplay.text!)!
+                    caculaterDisplay.text = "\(sum)"
+                    i = 0
                 }
                 calFlag = 2
             }
             if judge == false{
                 if caculatorOperator == 1{
-                    caculaterDisplay.text = "\(temp1 - Int(caculaterDisplay.text!)!)"
+                    sum1 = Int(sum - Double(caculaterDisplay.text!)!)
+                    caculaterDisplay.text = "\(sum1)"
+                    i = 0
                 }
                 calFlag = 2
             }
@@ -209,13 +220,17 @@ class ViewController: UIViewController {
         case 3:
             if judge == true{
                 if caculatorOperator == 1{
-                    caculaterDisplay.text = "\(temp * Double(caculaterDisplay.text!)!)"
+                    sum = sum * Double(caculaterDisplay.text!)!
+                    caculaterDisplay.text = "\(sum)"
+                    i = 0
                 }
                 calFlag = 2
             }
             if judge == false{
                 if caculatorOperator == 1{
-                    caculaterDisplay.text = "\(temp1 * Int(caculaterDisplay.text!)!)"
+                    sum1 = Int(sum * Double(caculaterDisplay.text!)!)
+                    caculaterDisplay.text = "\(sum1)"
+                    i = 0
                 }
                 calFlag = 2
             }
@@ -234,15 +249,23 @@ class ViewController: UIViewController {
             
             
         case 4:
+            if caculaterDisplay.text=="0"
+            {
+                break
+            }
             if judge == true{
                 if caculatorOperator == 1{
-                    caculaterDisplay.text = "\(temp / Double(caculaterDisplay.text!)!)"
+                    sum = sum / Double(caculaterDisplay.text!)!
+                    caculaterDisplay.text = "\(sum)"
+                    i = 0
                 }
                 calFlag = 2
             }
             if judge == false{
                 if caculatorOperator == 1{
-                    caculaterDisplay.text = "\(temp1 / Int(caculaterDisplay.text!)!)"
+                    sum1 = Int(sum / Double(caculaterDisplay.text!)!)
+                    caculaterDisplay.text = "\(sum1)"
+                    i = 0
                 }
                 calFlag = 2
             }
@@ -276,17 +299,50 @@ class ViewController: UIViewController {
     @IBAction func button_add(_ sender: Any) {
         if caculatorOperator == 1{
             if judge == true{
-                caculaterDisplay.text = "\(temp + Double(caculaterDisplay.text!)!)"
+                temp = Double(caculaterDisplay.text!)!
+                if(i == 0)
+                {
+                    caculaterDisplay.text = ""
+                    sum = temp
+                }
+                i=i+1
+                if(i == 2)
+                {
+                    sum = sum + Double(caculaterDisplay.text!)!
+                    caculaterDisplay.text = ""
+                }
+                i = 1
+                flag = 1
+                
+            
             }
+
             if judge == false{
-                caculaterDisplay.text = "\(temp1 + Int(caculaterDisplay.text!)!)"
-            }
+                temp1 = Int(caculaterDisplay.text!)!
+                if(i == 0)
+                {
+                    caculaterDisplay.text = ""
+                    sum1 = temp1
+                }
+                i=i+1
+                if(i == 2)
+                {
+                    sum1 = sum1 + Int(caculaterDisplay.text!)!
+                    caculaterDisplay.text = ""
+                }
+                i = 1
+                flag = 1
+                
+
         }
-        temp = Double(caculaterDisplay.text!)!
-        temp1 = Int(caculaterDisplay.text!)!
+        }
         calFlag = 2
         caculatorOperator = 1
-        flag = 1
+        //temp = Double(caculaterDisplay.text!)!
+        //temp1 = Int(caculaterDisplay.text!)!
+        //calFlag = 2
+        //caculatorOperator = 1
+        //flag = 1
         /*
         temp = Double(caculaterDisplay.text!)!
         if(i == 0)
@@ -303,23 +359,73 @@ class ViewController: UIViewController {
         i = 1
         flag = 1
  */
-    }
     
+    }
     
     @IBAction func button_minus(_ sender: Any) {
         if caculatorOperator == 1{
             if judge == true{
-                caculaterDisplay.text = "\(temp - Double(caculaterDisplay.text!)!)"
+                flag = 2
+                calFlag = 2
+                if i == 0{
+                    sum = Double(caculaterDisplay.text!)!
+                    i = 1
+                }else{
+                    switch flag1 {
+                    case 1:
+                        sum += Double(caculaterDisplay.text!)!
+                        break
+                    case 2:
+                        sum -= Double(caculaterDisplay.text!)!
+                        break
+                    case 3:
+                        sum *= Double(caculaterDisplay.text!)!
+                        break
+                    case 4:
+                        sum /= Double(caculaterDisplay.text!)!
+                        break
+                    default:
+                        break
+                    }
+                }
+                caculaterDisplay.text = "\(sum)"
+                flag1 = 2
+
             }
             if judge == false{
-                caculaterDisplay.text = "\(temp1 - Int(caculaterDisplay.text!)!)"
-            }
+                flag = 2
+                calFlag = 2
+                if i == 0{
+                    sum1 = Int(caculaterDisplay.text!)!
+                    i = 1
+                }else{
+                    switch flag1 {
+                    case 1:
+                        sum1 += Int(caculaterDisplay.text!)!
+                        break
+                    case 2:
+                        sum1 -= Int(caculaterDisplay.text!)!
+                        break
+                    case 3:
+                        sum1 *= Int(caculaterDisplay.text!)!
+                        break
+                    case 4:
+                        sum1 /= Int(caculaterDisplay.text!)!
+                        break
+                    default:
+                        break
+                    }
+                }
+                caculaterDisplay.text = "\(sum1)"
+                flag1 = 2
+
         }
-        temp = Double(caculaterDisplay.text!)!
-        temp1 = Int(caculaterDisplay.text!)!
-        calFlag = 2
-        caculatorOperator = 1
-        flag = 2
+        }
+        //temp = Double(caculaterDisplay.text!)!
+        //temp1 = Int(caculaterDisplay.text!)!
+        //calFlag = 2
+        //caculatorOperator = 1
+        //flag = 2
         /*
         temp = Double(caculaterDisplay.text!)!
         if(i == 0)
@@ -336,23 +442,50 @@ class ViewController: UIViewController {
         i = 1
         flag = 2
  */
-    }
+        }
     
     
     @IBAction func button_multiply(_ sender: Any) {
         if caculatorOperator == 1{
             if judge == true{
-                caculaterDisplay.text = "\(temp * Double(caculaterDisplay.text!)!)"
+                temp = Double(caculaterDisplay.text!)!
+                if(i == 0)
+                {
+                    caculaterDisplay.text = ""
+                    sum = temp
+                }
+                i=i+1
+                if(i == 2)
+                {
+                    sum = sum * Double(caculaterDisplay.text!)!
+                    caculaterDisplay.text = ""
+                }
+                i = 1
+                flag = 3
             }
             if judge == false{
-                caculaterDisplay.text = "\(temp1 * Int(caculaterDisplay.text!)!)"
+                temp1 = Int(caculaterDisplay.text!)!
+                if(i == 0)
+                {
+                    caculaterDisplay.text = ""
+                    sum1 = temp1
+                }
+                i=i+1
+                if(i == 2)
+                {
+                    sum1 = sum1 * Int(caculaterDisplay.text!)!
+                    caculaterDisplay.text = ""
+                }
+                i = 1
+                flag = 3
+
             }
         }
-        temp = Double(caculaterDisplay.text!)!
-        temp1 = Int(caculaterDisplay.text!)!
+        //temp = Double(caculaterDisplay.text!)!
+        //temp1 = Int(caculaterDisplay.text!)!
         calFlag = 2
         caculatorOperator = 1
-        flag = 3
+        //flag = 3
         /*
         temp = Double(caculaterDisplay.text!)!
         if(i == 0)
@@ -374,17 +507,44 @@ class ViewController: UIViewController {
     @IBAction func button_divide(_ sender: Any) {
         if caculatorOperator == 1{
             if judge == true{
-                caculaterDisplay.text = "\(temp / Double(caculaterDisplay.text!)!)"
+                temp = Double(caculaterDisplay.text!)!
+                if(i == 0)
+                {
+                    caculaterDisplay.text = ""
+                    sum = temp
+                }
+                i=i+1
+                if(i == 2)
+                {
+                    sum = sum / Double(caculaterDisplay.text!)!
+                    caculaterDisplay.text = ""
+                }
+                i = 1
+                flag = 4
             }
             if judge == false{
-                caculaterDisplay.text = "\(temp1 / Int(caculaterDisplay.text!)!)"
+                temp1 = Int(caculaterDisplay.text!)!
+                if(i == 0)
+                {
+                    caculaterDisplay.text = ""
+                    sum1 = temp1
+                }
+                i=i+1
+                if(i == 2)
+                {
+                    sum1 = sum1 / Int(caculaterDisplay.text!)!
+                    caculaterDisplay.text = ""
+                }
+                i = 1
+                flag = 4
+
             }
         }
-        temp = Double(caculaterDisplay.text!)!
-        temp1 = Int(caculaterDisplay.text!)!
+        //temp = Double(caculaterDisplay.text!)!
+        //temp1 = Int(caculaterDisplay.text!)!
         calFlag = 2
         caculatorOperator = 1
-        flag = 4
+        //flag = 4
         /*
         temp = Double(caculaterDisplay.text!)!
         if(i == 0)
@@ -496,7 +656,7 @@ class ViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        caculaterDisplay.text = "0"
+        caculaterDisplay.text = ""
         // Do any additional setup after loading the view, typically from a nib.
     }
 
