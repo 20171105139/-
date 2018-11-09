@@ -245,7 +245,7 @@
                                     <color key="titleColor" cocoaTouchSystemColor="darkTextColor"/>
                                 </state>
                                 <connections>
-                                    <action selector="back:" destination="BYZ-38-t0r" eventType="touchUpInside" id="hxc-Rd-ROR"/>
+                                    <action selector="back:" destination="BYZ-38-t0r" eventType="touchUpInside" id="FBY-v5-iw2"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="l3r-YO-ghu">
@@ -299,6 +299,9 @@
                                 <state key="normal" title=" 欢   迎   使   用">
                                     <color key="titleColor" cocoaTouchSystemColor="darkTextColor"/>
                                 </state>
+                                <connections>
+                                    <action selector="welcome:" destination="BYZ-38-t0r" eventType="touchUpInside" id="duA-fP-L1o"/>
+                                </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="zaQ-a4-4aB">
                                 <rect key="frame" x="227" y="184" width="30" height="48"/>

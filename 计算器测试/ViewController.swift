@@ -158,13 +158,13 @@ class ViewController: UIViewController {
                 sum = sum + Double(caculaterDisplay.text!)!
                 caculaterDisplay.text! = "\(sum)"
                 i = 0
-                
+                calFlag = 2
             }
             if judge == false{
                 sum1 = Int(sum + Double(caculaterDisplay.text!)!)
                 caculaterDisplay.text! = "\(sum1)"
                 i = 0
-            
+                calFlag = 2
             }
 
             
@@ -229,10 +229,6 @@ class ViewController: UIViewController {
     }
     
     @IBAction func button_add(_ sender: Any) {
-        //if(caflag==0)
-        //{
-           // caculaterDisplay.text="0"
-        //}
         
         temp = Double(caculaterDisplay.text!)!
         if(i == 0)
@@ -248,6 +244,7 @@ class ViewController: UIViewController {
         }
         i=1
         flag=1
+        calFlag = 2
     }
 
 
@@ -388,8 +385,9 @@ class ViewController: UIViewController {
     
     
     @IBAction func welcome(_ sender: Any) {
-        caculaterDisplay.text = caculaterDisplay.text!+"保持好的心态 迎接未来！"
+        caculaterDisplay.text = caculaterDisplay.text!+"保持好心态，迎接未来！"
     }
+
     @IBAction func back(_ sender: Any) {
         if caculaterDisplay.text == ""{
             caculaterDisplay.text = ""
@@ -403,7 +401,6 @@ class ViewController: UIViewController {
             }
         }
     }
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         caculaterDisplay.text = ""
