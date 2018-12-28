@@ -149,22 +149,21 @@ class ViewController: UIViewController {
     
     
     @IBAction func button_sum(_ sender: Any) {
-        //if caflag==0{
-        //   caculaterDisplay.text="0"
-        //}
+        
+       
         switch flag {
         case 1:
             if judge == true{
                 sum = sum + Double(caculaterDisplay.text!)!
                 caculaterDisplay.text! = "\(sum)"
-                i = 0
-                calFlag = 2
+                    i = 0
+                
             }
             if judge == false{
                 sum1 = Int(sum + Double(caculaterDisplay.text!)!)
                 caculaterDisplay.text! = "\(sum1)"
-                i = 0
-                calFlag = 2
+                    i = 0
+                
             }
 
             
@@ -244,7 +243,7 @@ class ViewController: UIViewController {
         }
         i=1
         flag=1
-        calFlag = 2
+        
     }
 
 
